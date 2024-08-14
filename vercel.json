@@ -1,7 +1,12 @@
 {
-    "redirects": [{
-        "source": "/enter",
-        "destination": "/index.html",
-        "permanent": true
-    }]
-}
+    "version":2,
+    "builds": [
+      { "src": "*.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+        {
+          "src": "/(.*)",
+          "dest": "/"
+        }
+    ]
+  }
