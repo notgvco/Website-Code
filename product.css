@@ -1,0 +1,363 @@
+@import url(https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap);
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    min-height: 100vh;
+    position: relative;
+    cursor: none;
+}
+
+.circle {
+    height: 15px;
+    width: 15px;
+    border-radius: 24px;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999999;
+    /* so that it stays on top of all other elements */
+}
+
+header {
+    position: fixed;
+    /* Đặt vị trí cố định để giữ logo ở đầu màn hình */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Chiếm toàn bộ chiều rộng của màn hình */
+    text-align: center;
+    /* Căn giữa nội dung trong phần tử header */
+    padding: 1px 0;
+    /* Khoảng cách phía trên và dưới logo */
+    background: transparent;
+    /* Không có nền */
+    border: none;
+    /* Loại bỏ border nếu có */
+    box-shadow: none;
+    /* Loại bỏ bóng nếu có */
+    z-index: 1000;
+    /* Đảm bảo header luôn nằm trên cùng */
+}
+
+
+/* Căn giữa logo và giữ tỷ lệ */
+
+.logo {
+    display: inline-block;
+    /* Đảm bảo phần tử chứa logo có kích thước tự động */
+}
+
+
+/* Ví dụ: Đổi màu tên sản phẩm thành màu đỏ */
+
+.dropdown {
+    position: fixed;
+    /* Đặt vị trí cố định */
+    top: 70px;
+    /* Căn lề từ trên cùng */
+    left: 15px;
+    /* Căn lề từ bên trái */
+    display: inline-block;
+    z-index: 1000;
+    /* Đảm bảo menu ở trên các phần tử khác */
+}
+
+
+/* Styles for the dropdown button */
+
+.dropbtn {
+    font-family: 'Bebas Neue';
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    /* Tăng padding để chữ to hơn và dễ bấm hơn */
+    font-size: 24px;
+    /* Tăng kích thước chữ */
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    /* Đảm bảo nó không chiếm toàn bộ chiều rộng */
+}
+
+
+/* Dropdown content (hidden by default) */
+
+.dropdown-content {
+    font-size: 20px;
+    font-family: 'Bebas Neue';
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    min-width: 160px;
+    z-index: 1000;
+    /* Đảm bảo menu ở trên các phần tử khác */
+    top: calc(100% + 5px);
+    /* Đưa menu xuống dưới nút và cách 5px */
+    left: 0;
+    /* Căn lề bên trái của menu với nút */
+}
+
+
+/* Links inside the dropdown */
+
+.dropdown-content a {
+    filter: invert(100%) brightness(70%);
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: transform 0.3s ease;
+    /* Transition for the transform effect */
+}
+
+
+/* Change color of links on hover */
+
+.dropdown-content a:hover {
+    background-color: transparent;
+    transform: translateY(-5px);
+    /* Move the item up */
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
+    /* Khoảng cách giữa các biểu tượng */
+    position: fixed;
+    /* Đặt vị trí cố định */
+    top: 95px;
+    /* Khoảng cách từ trên cùng */
+    right: 25px;
+    /* Khoảng cách từ bên phải */
+    z-index: 1000;
+    /* Đảm bảo icons luôn nằm trên cùng */
+}
+
+.icon {
+    width: 30px;
+    /* Kích thước của biểu tượng */
+    height: 30px;
+    /* Kích thước của biểu tượng */
+    cursor: pointer;
+    /* Hiệu ứng con trỏ chuột */
+    transition: opacity 0.5s ease;
+    /* Hiệu ứng chuyển đổi */
+}
+
+.icon:hover {
+    opacity: 0.7;
+    /* Thay đổi độ mờ khi di chuột vào biểu tượng */
+}
+
+
+/* Đặt nền của toàn bộ trang chi tiết sản phẩm */
+
+.product-details {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    font-size: 15px;
+}
+
+
+/* Hình ảnh chính và thumbnails nằm bên trái */
+
+.product-images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-main-image {
+    width: 100%;
+    height: auto;
+}
+
+.product-thumbnails {
+    display: flex;
+    gap: 5px;
+}
+
+.product-thumbnails img {
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+}
+
+
+/* Thông tin sản phẩm nằm bên phải */
+
+.product-info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#product-title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#product-price {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.product-cart {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-cart label {
+    margin-bottom: 5px;
+}
+
+.product-cart input {
+    width: 100px;
+    padding: 5px;
+}
+
+.product-cart button {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.product-cart button:hover {
+    background-color: #e67e22;
+}
+
+
+/* Thông tin kích cỡ áo */
+
+.product-size {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-size p {
+    margin: 0;
+}
+
+.sizes {
+    display: flex;
+    gap: 10px;
+}
+
+.size {
+    background-color: #333;
+    color: rgb(255, 255, 255);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.size:hover {
+    background-color: #555;
+}
+
+.size.selected {
+    background-color: #f39c12;
+}
+
+
+/* Điều chỉnh số lượng */
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#decrease-quantity,
+#increase-quantity {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#decrease-quantity:hover,
+#increase-quantity:hover {
+    background-color: #e67e22;
+}
+
+#quantity {
+    width: 60px;
+    text-align: center;
+}
+
+
+/* Media Query cho các thiết bị nhỏ hơn */
+
+@media (max-width: 768px) {
+    .product-details {
+        flex-direction: column;
+        /* Hiển thị các phần tử dưới dạng cột trên điện thoại */
+    }
+    .product-images {
+        flex-direction: column;
+        /* Đặt hình ảnh chính thành cột */
+        gap: 10px;
+    }
+    .product-thumbnails {
+        display: none;
+        /* Ẩn thumbnails trên thiết bị nhỏ */
+    }
+    .product-images-slider {
+        display: block;
+        /* Hiển thị slider ảnh trên màn hình nhỏ */
+    }
+}
+
+.product-image-container {
+    position: relative;
+    width: 300px;
+    /* Chỉnh kích thước theo nhu cầu */
+}
+
+#product-image {
+    width: 100%;
+}
+
+
+/* Thêm vào product.css */
+
+.product-image-container {
+    position: relative;
+    width: 300px;
+    /* Chỉnh kích thước theo nhu cầu */
+    margin-bottom: 20px;
+    /* Khoảng cách giữa các sản phẩm */
+}
+
+.product-main-image {
+    width: 100%;
+}
